@@ -22,7 +22,7 @@
     }
 
     .logo img {
-      height: 60px; /* Reduced size */
+      height: 60px;
     }
 
     nav ul {
@@ -45,7 +45,7 @@
     .hero {
       position: relative;
       width: 100%;
-      height: 300px; /* Reduced height */
+      height: 300px;
       background-color: #000;
     }
 
@@ -130,6 +130,46 @@
       margin: 5px 0;
     }
 
+    /* Shopping Cart Section */
+    .cart {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      width: 300px;
+      background-color: #fff;
+      border: 2px solid #333;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    .cart h2 {
+      margin-top: 0;
+    }
+
+    .cart ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cart ul li {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .cart button {
+      margin-top: 10px;
+      padding: 5px 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cart button:hover {
+      background-color: #555;
+    }
+
     /* Responsive styles */
     @media (max-width: 768px) {
       header {
@@ -205,6 +245,7 @@
         <div class="item">
           <h3>Grilled Salmon</h3>
           <p>$19.99</p>
+          <button onclick="addToCart('Grilled Salmon', 19.99)">Add to Cart</button>
         </div>
       </div>
       <div class="slide">
@@ -212,6 +253,7 @@
         <div class="item">
           <h3>Pasta Primavera</h3>
           <p>$14.99</p>
+          <button onclick="addToCart('Pasta Primavera', 14.99)">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -244,6 +286,67 @@
     </div>
   </footer>
 
+  <div id="cart" class="cart">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p id="cart-total">Total: $0.00</p>
+    <button onclick="clearCart()">Clear Cart</button>
+  </div>
+
+  <script>
+    const cart = {};
+
+    function addToCart(itemName, itemPrice) {
+      if (cart[itemName]) {
+        cart[itemName].quantity += 1;
+      } else {
+        cart[itemName] = {
+          price: itemPrice,
+          quantity: 1
+        };
+      }
+      updateCartUI();
+    }
+
+    function removeFromCart(itemName) {
+      if (cart[itemName]) {
+        cart[itemName].quantity -= 1;
+        if (cart[itemName].quantity <= 0) {
+          delete cart[itemName];
+        }
+        updateCartUI();
+      }
+    }
+
+    function clearCart() {
+      for (const item in cart) {
+        delete cart[item];
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const cartItemsContainer = document.getElementById('cart-items');
+      cartItemsContainer.innerHTML = '';
+
+      let total = 0;
+
+      for (const item in cart) {
+        const { price, quantity } = cart[item];
+        const itemTotal = price * quantity;
+        total += itemTotal;
+
+        const li = document.createElement('li');
+        li.innerHTML = `
+          ${item} - $${price.toFixed(2)} x ${quantity} = $${itemTotal.toFixed(2)}
+          <button onclick="removeFromCart('${item}')">Remove</button>
+        `;
+        cartItemsContainer.appendChild(li);
+      }
+
+      document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
+    }
+  </script>
 </body>
 
 </html>
