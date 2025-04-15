@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Master Chef - Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+    }
+
+    .logo img {
+      height: 60px; /* Reduced size */
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 300px; /* Reduced height */
+      background-color: #000;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .slider {
+      display: flex;
+      overflow-x: scroll;
+      padding: 20px;
+    }
+
+    .slide {
+      flex: 0 0 auto;
+      margin: 0 10px;
+      text-align: center;
+    }
+
+    .slide img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .item h3 {
+      margin: 10px 0 5px;
+    }
+
+    .about,
+    .contact {
+      padding: 40px 20px;
+      background-color: #f4f4f4;
+    }
+
+    .contact iframe {
+      width: 100%;
+      height: 300px;
+      margin-bottom: 20px;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact input,
+    .contact textarea,
+    .contact button {
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 1rem;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer .social-media a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+    }
+
+    footer .business-hours p {
+      margin: 5px 0;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+
+      .hero-text {
+        font-size: 2rem;
+      }
+
+      .slide img {
+        width: 80%;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-text {
+        font-size: 1.6rem;
+      }
+
+      .contact input,
+      .contact textarea,
+      .contact button {
+        font-size: 0.9rem;
+      }
+
+      footer .business-hours p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Restaurant Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="banner.png" alt="Restaurant Hero Image">
+    <div class="hero-text">
+      <h1>Master Chef</h1>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <div class="slider">
+      <div class="slide">
+        <img src="salmon.jpg" alt="Grilled Salmon">
+        <div class="item">
+          <h3>Grilled Salmon</h3>
+          <p>$19.99</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="pasta.jpg" alt="Pasta Primavera">
+        <div class="item">
+          <h3>Pasta Primavera</h3>
+          <p>$14.99</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About Us</h2>
+    <p>We are a family-owned restaurant that has been serving the community for over 10 years. Our specialty is our signature pasta dishes, made with fresh, local ingredients.</p>
+  </section>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=..." style="border:0;"></iframe>
+    <form action="submit_form.php" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="social-media">
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+    </div>
+    <div class="business-hours">
+      <p>Mon - Fri: 10 AM - 8 PM</p>
+      <p>Sat - Sun: 11 AM - 10 PM</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
